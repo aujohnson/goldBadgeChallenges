@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Challenge_5
 {
-    class CustomerClass
+   public class CustomerClass
     {
         //Constructor
         public CustomerClass(string firstName, string lastName, string type, string email)
@@ -20,5 +20,16 @@ namespace Challenge_5
         public string LastName { get; set; }
         public string Type { get; set; }
         public string Email { get; set; }
+
+
+
+
+        public override string ToString()
+        {
+            return $"First Name: {FirstName}\n" +
+                             $"Last Name: {LastName}\n" +
+                             $"Customer type: {Type}\n" +
+                             $"Expected email: {Email}\n";
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace Challenge_1_Tests
             //--Act
             int actual = list.Count;
 
-            int expected = 4;
+            int expected = 0;
 
             //--Assert
             Assert.AreEqual(expected, actual);
@@ -38,14 +38,14 @@ namespace Challenge_1_Tests
             //--Act
             int actual = list.Count;
 
-            int expected = 5;
+            int expected = 1;
             //--Assert
             Assert.AreEqual(expected, actual);
 
 
         }
         [TestMethod]
-        public void MenuRepository_RemoveItemFromList_ShouldDeccreaseCount()
+        public void MenuRepository_RemoveItemFromList_ShouldDecreaseCount()
         {
             //--Arrange
             MenuItems removeItem = new MenuItems(4, "Hot Dog", "Hotdog on a hotdog bun", "One cooked hotdog on a hotdog bun with your choice of ketchup or mustard", 2.99);
@@ -56,7 +56,7 @@ namespace Challenge_1_Tests
 
             //--Act
             int actual = list.Count;
-            int expected = 3;
+            int expected = 0;
 
             //--Assert
             Assert.AreEqual(expected, actual);
@@ -75,7 +75,7 @@ namespace Challenge_1_Tests
             //-- Act
             int actual = menuList.Count;
 
-            int expected = 4;
+            int expected = 1;
 
             //-- Assert
             Assert.AreEqual(expected, actual);

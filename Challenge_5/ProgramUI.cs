@@ -8,8 +8,9 @@ namespace Challenge_5
 {
     public class ProgramUI
     {
-        CustomerRepository outingRepo = new CustomerRepository();
+        CustomerRepository _customerRepo = new CustomerRepository();
         private List<CustomerClass> tempList = new List<CustomerClass>();
+        string firstName;
 
         public void run()
         {
@@ -20,22 +21,103 @@ namespace Challenge_5
 
         public void InitialPrompt()
         {
+            //begin while
             Console.WriteLine("Please select an option: \n 1)Add Customer to list \n 2)View list \n 3)Update list \n 4) Delete profile");
             int option = Convert.ToInt32(Console.ReadLine());
-
-            switch (option)
+            if (option == 1)
             {
-                case 1:
-                    Console.WriteLine("Enter first name");
-                    Console.ReadLine();
-
-                    break;
+                AddNewCustomerToList();
+            }
+            else if (option == 2)
+            {
+                DisplayList();
+            }
+            else if (option == 3)
+            {
+                UpdateList();
+            }
+            else if (option == 4)
+            {
+                DeleteCustomer();
+            }
+            else 
+            {
+                Exit();
+                
             }
 
-            int (option == 1) ;
             
+            //(option == 5)
+            // break;
+            //end while //break;
+        }
 
+
+        public void AddNewCustomerToList()
+        {
+            Console.Clear();
+            Console.WriteLine("What is your first name?");
+            string firstName = Console.ReadLine();
+            Console.WriteLine("What is your last name?");
+            string lastName = Console.ReadLine();
+            Console.WriteLine();
+            // prompt type of user
+            // int x = convert console readline
+
+            //switch(x)
+
+
+            //switch (Type)
+            //{
+            //    case 1:
+            //        customerType = Type.Current;
+            //}
+        }
+
+        public void DisplayList()
+        {
+            
+            foreach (CustomerClass customer in _customerRepo.getList())
+            {
+                Console.WriteLine(customer);
+                Console.ReadLine();
+            }
+           
+        }
+
+
+        public void UpdateList()
+        {
+            
+            List<CustomerClass> customers = _customerRepo.getList();
+            int index = customers.FindIndex(x => x.FirstName == firstName);
+            CustomerClass edit = new CustomerClass("firstName", "lastName", "type", "email");
+            Console.WriteLine("What would you like to update name to");
+            Console.ReadLine();
+            string newName = Console.ReadLine();
+            customers[index].FirstName = newName;
 
         }
+
+        public void DeleteCustomer()
+        {
+
+            Console.WriteLine("Which customer would you like to delete?");
+            string firstName = Console.ReadLine();
+            _customerRepo.RemoveCustomer(firstName);
+
+            List<CustomerClass> customers = _customerRepo.getList();
+            int index = customers.FindIndex(x => x.FirstName == firstName);
+            string removeCustomer = Console.ReadLine();
+            customers.RemoveAt(index);
+
+        }
+        public void Exit()
+        {
+
+        }
+
+
     }
 }
+
