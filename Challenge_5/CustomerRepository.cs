@@ -22,38 +22,40 @@ namespace Challenge_5
             customers.Add(customer);
         }
 
-        public void RemoveCustomer(string firstName)
-
+        public void RemoveCustomerByFirstName(string name)
         {
-            //customers.Remove(customer);
-
-            int index = 0;
-            foreach (CustomerClass currentCustomer in customers)
+            List<CustomerClass> removing = customers.FindAll(x => x.FirstName == name);
+            foreach (CustomerClass cust in removing)
             {
-                if (currentCustomer.FirstName == firstName)
-                {
-                    index = customers.IndexOf(currentCustomer);
-                }
-
+                customers.Remove(cust);
             }
-            customers.RemoveAt(index)
-
-
-
-
-
-
         }
 
-        public void UpdateCustomer(CustomerClass customer)
+
+
+
+
+
+    
+
+        public void UpdateCustomer(string name, CustomerClass customer)
         {
+            List<CustomerClass> updateCustomer = customers.FindAll(x => x.LastName == name);
+
+            foreach(CustomerClass c in updateCustomer)
+            {
+                customers.Remove(c);
+            }
+
+            customers.Add(customer);
+
             // itierated through private customer list
             // if logic statement checking that the parameter == current cutstomer of the iteration loop
 
             // 
 
-            customer.(customer);
         }
+        
         public List<CustomerClass> getList()
         {
             return customers;

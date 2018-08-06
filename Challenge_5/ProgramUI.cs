@@ -22,6 +22,8 @@ namespace Challenge_5
         public void InitialPrompt()
         {
             //begin while
+            //bool AddNewCustomerToList = true;
+            //while (AddNewCustomerToList)
             Console.WriteLine("Please select an option: \n 1)Add Customer to list \n 2)View list \n 3)Update list \n 4) Delete profile");
             int option = Convert.ToInt32(Console.ReadLine());
             if (option == 1)
@@ -61,8 +63,31 @@ namespace Challenge_5
             Console.WriteLine("What is your last name?");
             string lastName = Console.ReadLine();
             Console.WriteLine();
-            // prompt type of user
-            // int x = convert console readline
+
+            {
+                int choice = Convert.ToChar(Console.ReadLine());
+
+                {
+                    switch (choice)
+                    {
+                        case 1:
+                            AddNewCustomerToList();
+                            break;
+                        case 2:
+                            DisplayList();
+                            break;
+                        case 3:
+                            UpdateList();
+                            break;
+                        case 4:
+                            DeleteCustomer();
+                            break;
+
+                    }
+                    Console.Clear();
+                    Console.WriteLine("Have a nice day!");
+                }
+            }
 
             //switch(x)
 
@@ -104,7 +129,7 @@ namespace Challenge_5
 
             Console.WriteLine("Which customer would you like to delete?");
             string firstName = Console.ReadLine();
-            _customerRepo.RemoveCustomer(firstName);
+            _customerRepo.RemoveCustomerByFirstName(firstName);
 
             List<CustomerClass> customers = _customerRepo.getList();
             int index = customers.FindIndex(x => x.FirstName == firstName);
